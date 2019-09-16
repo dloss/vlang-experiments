@@ -21,7 +21,10 @@
 
 import os
 
-version := '0.1'
+const (
+    version = '0.1'
+)
+
 
 fn print_bits(val byte) {
     mut bitmask := byte(128)
@@ -36,20 +39,26 @@ fn print_bits(val byte) {
     }
 }
 
-println('VCHD $version')
-println('')
-println('Insert text:')
-println('')
-println('ch Hx Dec Oct Binary')
-println('----------------------')
+fn main() {
 
-mut chr := byte(0)
-for {
-    line := os.get_line()
-    for chr in line {
-        C.printf(' %c %02x %03d %03o ',
-                  chr, chr, chr, chr)
-        print_bits(chr)
-        println('')
+    println('VCHD $version')
+    println('')
+    println('Insert text:')
+    println('')
+    println('ch Hx Dec Oct Binary')
+    println('----------------------')
+
+    chr := byte(0)
+    for {
+        line := os.get_line()
+        for chr in line {
+            C.printf(' %c %02x %03d %03o ',
+                      chr, chr, chr, chr)
+            print_bits(chr)
+            println('')
+        }
     }
 }
+
+
+main()
