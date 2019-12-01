@@ -48,7 +48,6 @@ fn main() {
     println('ch Hx Dec Oct Binary')
     println('----------------------')
 
-    chr := byte(0)
     for {
         line := os.get_line()
         for chr in line {
