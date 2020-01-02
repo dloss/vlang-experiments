@@ -19,45 +19,41 @@
     http://www.gnu.org/licenses/gpl.txt
 */
 
+
 import os
 
 const (
-    version = '0.1'
+	version = '0.1'
 )
 
-
 fn print_bits(val byte) {
-    mut bitmask := byte(128)
-    for bitmask > 0 {
-        if (val & bitmask) > 0 {
-            print('1')
-        }
-        else {
-            print('0')
-        }
-        bitmask = bitmask / 2
-    }
+	mut bitmask := byte(128)
+	for bitmask > 0 {
+		if (val & bitmask) > 0 {
+			print('1')
+		}
+		else {
+			print('0')
+		}
+		bitmask = bitmask / 2
+	}
 }
 
 fn main() {
-
-    println('VCHD $version')
-    println('')
-    println('Insert text:')
-    println('')
-    println('ch Hx Dec Oct Binary')
-    println('----------------------')
-
-    for {
-        line := os.get_line()
-        for chr in line {
-            C.printf(' %c %02x %03d %03o ',
-                      chr, chr, chr, chr)
-            print_bits(chr)
-            println('')
-        }
-    }
+	println('VCHD $version')
+	println('')
+	println('Insert text:')
+	println('')
+	println('ch Hx Dec Oct Binary')
+	println('----------------------')
+	for {
+		line := os.get_line()
+		for chr in line {
+			C.printf(' %c %02x %03d %03o ', chr, chr, chr, chr)
+			print_bits(chr)
+			println('')
+		}
+	}
 }
-
 
 main()
